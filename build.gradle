@@ -1,0 +1,43 @@
+apply plugin: "scala"
+
+project.buildDir = 'target'
+
+repositories {
+    mavenCentral()
+    maven { url "http://artifactory.reform.hmcts.net/artifactory/libs-release" }
+}
+
+dependencies {
+    testCompile "io.gatling.highcharts:gatling-charts-highcharts:2.3.1"
+    testCompile 'io.gatling:gatling-core:2.3.1'
+
+    testCompile 'uk.gov.hmcts.auth.provider.service:service-token-generator:1.0.5'
+    testCompile 'uk.gov.hmcts.auth.checker:auth-checker-spring:1.0.1'
+    testCompile 'io.rest-assured:rest-assured:3.0.3'
+    testCompile 'io.circe:circe-parser_2.12:0.9.2'
+}
+
+task loadTest(type: JavaExec) {
+    description = "load test with Gatling"
+    group = "Load Test"
+    classpath = sourceSets.test.runtimeClasspath
+    jvmArgs = [
+            "-Dgatling.core.directory.binaries=${sourceSets.test.output.classesDir.toString()}",
+            "-Dlogback.configurationFile=${logbackGatlingConfig()}",
+    ]
+    main = "io.gatling.app.Gatling"
+    args = [
+            "--simulation", "uk.gov.hmcts.solccdservices.simulation.SolCcdServicesSimulation",
+            "--results-folder", "${buildDir}/gatling-results",
+            "--binaries-folder", sourceSets.test.output.classesDir.toString(),
+            "--bodies-folder", sourceSets.test.resources.srcDirs.toList().first().toString() + "/gatling/bodies",
+    ]
+}
+
+def logbackGatlingConfig() {
+    return sourceSets.test.resources.find { it.name == 'logback-gatling.xml' };
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.4"
+}
