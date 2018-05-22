@@ -3,12 +3,12 @@
 
 def triggers = []
 if (env.BRANCH_NAME == "master") {
-    triggers << cron('H H(0-4) * * *') //build to trigger sometime between midnight and 4am every day
+    triggers << cron('H H(0-6) * * *') //build to trigger sometime between midnight and 4am every day
 }
 
 properties(
         [
-                [$class: 'GithubProjectProperty', projectUrlStr: 'https://git.reform.hmcts.net/probate/sol-ccd-services-integration-tests.git'],
+                [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/probate-sol-ccd-services-performance-tests.git'],
                 pipelineTriggers(triggers),
                 parameters([
                         string(description: 'Sol ccd url', defaultValue: 'http://betaDevbprobateapp01.reform.hmcts.net:4104', name: 'SOL_CCD_SERVICE_BASE_URL'),
