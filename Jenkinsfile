@@ -17,7 +17,8 @@ properties(
                         string(description: 'Service auth service name', defaultValue: 'PROBATE_BACKEND', name: 'AUTHORISED_SERVICES'),
                         string(description: 'At once users', defaultValue: '1', name: 'AT_ONCE_USERS'),
                         string(description: 'Min pass percent', defaultValue: '99', name: 'MIN_PASS_PERCENT'),
-                        string(description: 'Idam User Id', defaultValue: '22603', name: 'IDAM_USER_ID')
+                        string(description: 'Idam User Id', defaultValue: '22603', name: 'IDAM_USER_ID'),
+                        string(desciption: 'S2S secret', defaultValue: 'aaaa', name: 'S2S_AUTH_TOTP_SECRET')
                 ])
         ]
 )
