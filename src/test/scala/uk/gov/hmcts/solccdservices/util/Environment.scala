@@ -11,5 +11,7 @@ object Environment {
   val clientId: String = scala.util.Properties.envOrElse("IDAM_OAUTH2_CLIENT_ID", "ccd_gateway")
   val clientSecret: String = scala.util.Properties.envOrElse("IDAM_OAUTH2_CLIENT_SECRET", "OOOOOOOOOOOOOOOO")
   val redirectUri: String = scala.util.Properties.envOrElse("IDAM_OAUTH2_REDIRECT_URI", "http://localhost:3451/oauth2redirect")
-  val userId: String = scala.util.Properties.envOrElse("IDAM_USER_ID", "")
+  val userId: String = scala.util.Properties.envOrElse("IDAM_USER_ID", "null")
+  val serviceName: String = scala.util.Properties.envOrElse("SERVICE_NAME", "PROBATE_BACKEND")
+  val s2sAuthTotpSecret: String = scala.util.Properties.envOrElse("S2S_AUTH_TOTP_SECRET", "AAAAAAAAAAAAAAAA")
 }
