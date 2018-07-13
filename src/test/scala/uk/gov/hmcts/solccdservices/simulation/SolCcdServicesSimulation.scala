@@ -53,6 +53,24 @@ class SolCcdServicesSimulation extends Simulation {
     TemplateDocumentsData.createData.inject(
       atOnceUsers(Environment.atOnceUsers.toInt),
       rampUsersPerSec(1) to 7 during (2 seconds)
+    ),
+
+    DocumentsReceivedNotificationSolsData.createData.inject(
+      atOnceUsers(Environment.atOnceUsers.toInt),
+      rampUsersPerSec(1) to 7 during (2 seconds)
+    ),
+
+    DocumentsReceivedNotificationPaData.createData.inject(
+      atOnceUsers(Environment.atOnceUsers.toInt),
+      rampUsersPerSec(1) to 7 during (2 seconds)
+    ),
+    GrantIssuedNotificationPaData.createData.inject(
+      atOnceUsers(Environment.atOnceUsers.toInt),
+      rampUsersPerSec(1) to 7 during (2 seconds)
+    ),
+    GrantIssuedNotificationSolsData.createData.inject(
+      atOnceUsers(Environment.atOnceUsers.toInt),
+      rampUsersPerSec(1) to 7 during (2 seconds)
     )
   )
 
