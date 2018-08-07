@@ -11,14 +11,14 @@ properties(
                 [$class: 'GithubProjectProperty', projectUrlStr: 'https://github.com/hmcts/probate-sol-ccd-services-performance-tests.git'],
                 pipelineTriggers(triggers),
                 parameters([
-                        string(description: 'Sol ccd url', defaultValue: 'http://betaDevbprobateapp01.reform.hmcts.net:4104', name: 'SOL_CCD_SERVICE_BASE_URL'),
-                        string(description: 'Service auth url', defaultValue: 'http://betadevbccidams2slb.reform.hmcts.net', name: 'SERVICE_AUTH_PROVIDER_BASE_URL'),
+                        string(description: 'Sol ccd url', defaultValue: 'http://probate-back-office-saat.service.core-compute-saat.internal', name: 'SOL_CCD_SERVICE_BASE_URL'),
+                        string(description: 'Service auth url', defaultValue: 'http://rpe-service-auth-provider-saat.service.core-compute-saat.internal', name: 'SERVICE_AUTH_PROVIDER_BASE_URL'),
                         string(description: 'Idam user auth url', defaultValue: 'http://betadevbccidamapplb.reform.hmcts.net', name: 'USER_AUTH_PROVIDER_OAUTH2_URL'),
                         string(description: 'Service auth service name', defaultValue: 'PROBATE_BACKEND', name: 'AUTHORISED_SERVICES'),
                         string(description: 'At once users', defaultValue: '1', name: 'AT_ONCE_USERS'),
                         string(description: 'Min pass percent', defaultValue: '99', name: 'MIN_PASS_PERCENT'),
                         string(description: 'Idam User Id', defaultValue: '22603', name: 'IDAM_USER_ID'),
-                        string(desciption: 'S2S secret', defaultValue: 'aaaa', name: 'S2S_AUTH_TOTP_SECRET')
+                        string(desciption: 'S2S secret', defaultValue: 'CTB5EOJPYBYDI4NE', name: 'S2S_AUTH_TOTP_SECRET')
                 ])
         ]
 )
